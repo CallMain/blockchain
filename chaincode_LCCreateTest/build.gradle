@@ -36,7 +36,7 @@ task printClasspath {
     }
 }
 
-archivesBaseName = "chaincode"
+archivesBaseName = "blockchain"
 mainClassName="org.blockchain.LCCreateChainCode"
 
 run {
