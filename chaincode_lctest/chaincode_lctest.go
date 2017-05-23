@@ -202,6 +202,11 @@ func (t *LCChaincode) query(stub shim.ChaincodeStubInterface, params []string) p
 	return shim.Success(string(content))
 }
 func main() {
+	err := shim.Start(new(LCChaincode))
+	if err != nil {
+		fmt.Printf("Error starting Simple chaincode: %s", err)
+	}
+	/**
 	var content LCContent
 	//userJson := "{\"username\":\"system\",\"password\":123456}"
 
@@ -231,4 +236,5 @@ func main() {
 	immutable.FieldByName(key).SetString("ABCD1234")
 	fmt.Println(content.LCNO)
 	fmt.Println("%s", content.LCAMT)
+	*/
 }
