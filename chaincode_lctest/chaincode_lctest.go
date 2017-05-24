@@ -140,7 +140,6 @@ func (t *LCChaincode) Invoke(stub shim.ChaincodeStubInterface) pb.Response {
 //触发程序的修改数据
 func (t *LCChaincode) invoke(stub shim.ChaincodeStubInterface, params []string) pb.Response {
 	fmt.Println("invoke lctest content start ........")
-	var err error
 	var conStu LCContent
 	if len(params) != 1 {
 		return shim.Error("Incorrect number of arguments...")
@@ -153,7 +152,7 @@ func (t *LCChaincode) invoke(stub shim.ChaincodeStubInterface, params []string) 
 	if content == nil {
 		return shim.Error("LC content is null")
 	}
-	err = json.Unmarshal(content, &conStu)
+	err := json.Unmarshal(content, &conStu)
 	if err != nil {
 		shim.Error("convert json to lc struct error" + err.Error())
 	}
@@ -188,7 +187,6 @@ func (t *LCChaincode) invoke(stub shim.ChaincodeStubInterface, params []string) 
 func (t *LCChaincode) query(stub shim.ChaincodeStubInterface, params []string) pb.Response {
 	fmt.Println("query lctest content start ........")
 	//定义变量
-	var err error
 	var conStu LCContent
 	//取出信用证的内容
 	content, err := stub.GetState("content")
